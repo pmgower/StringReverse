@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>String Reverse Code Kata Answer - Paul Gower</title>
+        <style>
+            body
+            {
+                font-family: Arial;
+                font-size: 10pt;
+            }
+            div label#outputLabel
+            {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <label for="input">Input</label><br />
+            <input type="textbox" id="input" />
+        </div>
+        <br />
+        <div>
+            <label for="output" id="outputLabel">Reversed</label><br />
+            <span id="output"></span>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            if (!String.prototype.reverse) {
+                String.prototype.reverse = function () {
+                    var reversedString = "";
+                    for (var i = this.length - 1; i >= 0; --i) {
+                        reversedString += this[i];
+                    }
+                    return reversedString;
+                };
+            }
+
+            $(document).ready(function () {
+                $("#input").on("keyup", function () {
+                    var testString = $("#input").val();
+                    if (testString.length > 0) {
+                        var reversedTestString = testString.reverse();
+                        console.log('reversed: ' + reversedTestString);
+
+                        $("#outputLabel").show();
+                        $("#output").html(reversedTestString);
+                    }
+                    else {
+                        $("#outputLabel").hide();
+                        $("#output").html("");
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
